@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  nodejs:
+    container_name: nodejs
+    image: node:20
+    restart: unless-stopped
+    volumes:
+      - ..:/workspaces:cached 
+    entrypoint: tail -f /dev/null  

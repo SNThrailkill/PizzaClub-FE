@@ -1,5 +1,5 @@
 {
-	"name": "NextJS",
+	"name": "BookClub-frontend",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "nodejs",
 	"workspaceFolder": "/workspaces",

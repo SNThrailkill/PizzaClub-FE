@@ -1,6 +1,4 @@
 export default function ordersReducer(orders, action) {
-    console.log(orders);
-    console.log(action);
     switch (action.type) {
       case 'create': {
         return [

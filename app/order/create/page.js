@@ -26,7 +26,7 @@ function CreateActionRow({placeOrder, sendingOrder, success}) {
 }
 
 export default function OrderDetails() {
-    const {accessToken} = useContext(AuthContext);
+    const {cookie} = useContext(AuthContext);
     const dispatch = useContext(OrdersActionsContext);
     const [crust, setCrust] = useState();
     const [flavor, setFlavor] = useState();
@@ -47,7 +47,7 @@ export default function OrderDetails() {
         method: 'POST',    
         headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + accessToken
+                'Authorization': 'Bearer ' + cookie.accessToken
             },
         body: JSON.stringify({
             "Crust": crust,

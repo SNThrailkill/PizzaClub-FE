@@ -36,7 +36,9 @@ export default function Auth() {
         }
 
         const data = await res.json();
-        setToken(data.access_token);
+        let expires = new Date()
+        expires.setTime(expires.getTime() + (60 * 1000)); // Tokens only last an hour for login
+        setToken('accessToken', data.access_token, { path: '/',  expires});
         push('/');
     }
 

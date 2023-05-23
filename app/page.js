@@ -36,7 +36,6 @@ function SearchRow({orders, setFilteredResults}) {
     returnValue = [...new Set(returnValue)];
 
     if(searchValue !== ''){
-      console.log(returnValue);
       setFilteredResults(returnValue);
     } else {
       setFilteredResults(orders);

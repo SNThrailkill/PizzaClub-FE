@@ -105,3 +105,12 @@ a {
     color-scheme: dark;
   }
 }
+
+input {
+  height: 2em;
+  min-width: 100px;
+}
+
+button {
+  padding: 10px;
+}

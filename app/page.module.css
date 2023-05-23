@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
@@ -38,15 +38,29 @@
   font-family: var(--font-mono);
 }
 
+.contents {
+  display: contents;
+  width: var(--max-width);
+  max-width: 100%;
+  align-items: stretch;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
   width: var(--max-width);
   max-width: 100%;
+  align-items: stretch;
+}
+
+.right {
+  justify-self: right;
+  padding-right: 1em;
 }
 
 .card {
   padding: 1rem 1.2rem;
+  min-width: 10em;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
@@ -76,7 +90,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .center::before {
@@ -85,6 +99,7 @@
   width: 480px;
   height: 360px;
   margin-left: -400px;
+  margin-top: -200px;
 }
 
 .center::after {
@@ -92,6 +107,7 @@
   width: 240px;
   height: 180px;
   z-index: -1;
+  margin-left: -100px;
 }
 
 .center::before,
@@ -106,6 +122,7 @@
 .logo {
   position: relative;
 }
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {

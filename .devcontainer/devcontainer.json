@@ -1,5 +1,5 @@
 {
-	"name": "BookClub-frontend",
+	"name": "PizzaClub-FE",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "nodejs",
 	"workspaceFolder": "/workspaces",

@@ -2,33 +2,26 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install the Dev Containers extension in VSCode if you don't already have it.
+
+Second, clone the repo and open it in VSCode.
+
+Third, go to the Command Palette and click `Open Folder in Container`. This will open a preconfigured dev environment I have created for this project and give you a bash shell into the container. You may also interact with this container using Docker Desktop or Remote Connection VSCode extension.
+
+Fianlly, run the following command to bring up the project:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Sean's Thoughts
 
-To learn more about Next.js, take a look at the following resources:
+Normally I wouldn't want to create a context for the orders since I am passing down only one level but since this is a food odering service, it is likely that future work will require this information as well.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

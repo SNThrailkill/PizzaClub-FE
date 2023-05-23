@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nodejs:
-    container_name: nodejs
+    container_name: PizzaClub-FE
     image: node:20
     restart: unless-stopped
     volumes:

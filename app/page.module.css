@@ -45,6 +45,15 @@
   align-items: stretch;
 }
 
+.contents button {
+  border: 1px solid rgb(56, 56, 56);
+  border-radius: 5px;
+}
+
+.contents a {
+  border: 1px solid rgb(56, 56, 56);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));

@@ -5,7 +5,7 @@ import { useCookies, CookiesProvider } from 'react-cookie';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [cookie, setToken] = useCookies('access_token');
+    const [cookie, setToken] = useCookies(['accessToken']);
     const router = useRouter();
 
     if(!cookie.accessToken) {

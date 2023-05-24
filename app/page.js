@@ -83,6 +83,7 @@ export default function Orders() {
   const orders = useContext(OrdersContext);
   const dispatch = useContext(OrdersActionsContext);
 
+  // This will cause 2 calls in Strict Mode when in Dev Mode. Will not be problem in production.
   useEffect(() => {
     fetch('https://pizza-api-app.herokuapp.com/api/orders')
       .then(res => res.json())

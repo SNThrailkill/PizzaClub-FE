@@ -26,7 +26,7 @@ function CreateActionRow({placeOrder, sendingOrder, success}) {
 }
 
 export default function OrderDetails() {
-    const {cookie} = useContext(AuthContext);
+    const { cookie } = useContext(AuthContext);
     const dispatch = useContext(OrdersActionsContext);
     const [crust, setCrust] = useState();
     const [flavor, setFlavor] = useState();

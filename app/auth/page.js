@@ -8,13 +8,11 @@ import { LoginMessage } from "@/components/utils";
 
 
 export default function Auth() {
-    const {authContext, setToken} = useContext(AuthContext);
+    const { setToken } = useContext(AuthContext);
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const [loggingIn, isLoggingIn] = useState();
     const { push } = useRouter();
-
-    if(authContext && authContext.accessToken) console.log("Redirecting to orders page", authContext.accessToken)
 
     async function login() {
         isLoggingIn(true);
@@ -37,7 +35,7 @@ export default function Auth() {
 
         const data = await res.json();
         let expires = new Date()
-        expires.setTime(expires.getTime() + (60 * 1000)); // Tokens only last an hour for login
+        expires.setTime(expires.getTime() + (5 * 60 * 1000)); // Tokens only last 5 minutes from login
         setToken('accessToken', data.access_token, { path: '/',  expires});
         push('/');
     }

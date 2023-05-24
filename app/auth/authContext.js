@@ -8,6 +8,7 @@ export function AuthProvider({ children }) {
     const [cookie, setToken] = useCookies(['accessToken']);
     const router = useRouter();
 
+    // If an access token is not found in cookies then redirect to auth
     if(!cookie.accessToken) {
         router.push('/auth');
     }

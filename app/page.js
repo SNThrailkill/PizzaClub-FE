@@ -1,5 +1,5 @@
 'use client'
-import { useContext, useState, useEffect, useReducer } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css'
 import { NoResultsMessage } from '@/components/utils'
@@ -24,9 +24,16 @@ function OrderRow({ order }) {
 }
 
 function SearchRow({orders, setFilteredResults}) {
+  /* 
+  * In order to prevent state management issues, we pass the event directly to our function
+  * so event.target.value can be evaluated in the moment and have the latest value 
+  * versus trying to setState onChange which will cause our filter results to be 1 character behind what is actually typed in the input
+  */
   const searchItems = (event) => {
     const searchValue = event.target.value;
     var returnValue = [];
+    
+    // Here we will search across all attributes for any part of the search value. In order to prevent duplicates we pass combined results to a Set.
     returnValue = returnValue.concat(orders.filter((o) => o.Crust.toUpperCase().includes(searchValue.toUpperCase())));
     returnValue = returnValue.concat(orders.filter((o) => o.Flavor.toUpperCase().includes(searchValue.toUpperCase())));
     returnValue = returnValue.concat(orders.filter((o) => o.Size.toUpperCase().includes(searchValue.toUpperCase())));
@@ -82,6 +89,7 @@ function ResultsRow({filteredResults}) {
 export default function Orders() {
   const orders = useContext(OrdersContext);
   const dispatch = useContext(OrdersActionsContext);
+  const [filteredResults, setFilteredResults] = useState(orders);
 
   // This will cause 2 calls in Strict Mode when in Dev Mode. Will not be problem in production.
   useEffect(() => {
@@ -89,8 +97,7 @@ export default function Orders() {
       .then(res => res.json())
       .then(data => dispatch({orders: data, type: "get"}))
   }, []);
-
-  const [filteredResults, setFilteredResults] = useState(orders);
+  
   return (
         <main className={styles.main}>
           <div className={styles.center}>

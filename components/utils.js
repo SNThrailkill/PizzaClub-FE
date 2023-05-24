@@ -1,7 +1,7 @@
 import styles from '@/app/page.module.css'
-
+    
+// NextJS can not optimize gif images so you have to load them like normal assets
 export const LoadingMessage = (
-    // NextJS can not optimize gif images so you have to load it like normal asset
     <div>
         <img src="/loading.gif" alt="Loading"/>
         &nbsp;&nbsp;&nbsp;
@@ -16,7 +16,6 @@ export const NoResultsMessage = (
 )
 
 export const LoginMessage = (
-    // NextJS can not optimize gif images so you have to load it like normal asset
     <div>
         <img src="/loading.gif" alt="Logging In"/>
         &nbsp;&nbsp;&nbsp;
@@ -25,7 +24,6 @@ export const LoginMessage = (
 );
 
 export const SendingMessage = (
-    // NextJS can not optimize gif images so you have to load it like normal asset
     <div>
         <img src="/loading.gif" alt="Sending Order"/>
         &nbsp;&nbsp;&nbsp;
@@ -42,7 +40,6 @@ export const SuccessMessage = (
 );
 
 export const DeletingMessage = (
-    // NextJS can not optimize gif images so you have to load it like normal asset
     <div>
         <img src="/loading.gif" alt="Deleting Order"/>
         &nbsp;&nbsp;&nbsp;

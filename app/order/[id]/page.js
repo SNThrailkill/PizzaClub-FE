@@ -1,9 +1,9 @@
 'use client'; 
 
-import { useContext, useReducer, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from '../../page.module.css'
-import { OrdersContext, OrdersActionsContext } from '../../orderContext.js';
+import { OrdersContext, OrdersActionsContext } from '@/app/orderContext.js';
 import { AuthContext } from '@/app/auth/authContext';
 import { DeletingMessage, DeletedMessage } from '@/components/utils';
 
@@ -22,15 +22,17 @@ function DetailsActionsRow({deleteOrder, deletingOrder}) {
 
 
 export default function OrderDetails({ params }) {
-  const {accessToken} = useContext(AuthContext);
+  const { accessToken } = useContext(AuthContext);
   const previousOrders = useContext(OrdersContext);
   const dispatch = useContext(OrdersActionsContext);
   const [deletingOrder, setDeletingOrder] = useState();
   const [success, setSucess] = useState();
   const { push } = useRouter();
 
+  // Instead of making another call to fetch a specific order, use our orders from context and filter to show only the result with the matching ID from params
   const order = previousOrders ? previousOrders.filter((o) => { if(o.Order_ID == params.id) return o })[0] : null;
   
+  // String Interpolation vs concatentation
   async function deleteOrder() {
     setDeletingOrder(true);
     const res = await fetch(`https://pizza-api-app.herokuapp.com/api/orders/${order.Order_ID}`, {

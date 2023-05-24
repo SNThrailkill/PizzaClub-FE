@@ -1,10 +1,9 @@
 'use client'
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useReducer } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css'
 import { NoResultsMessage } from '@/components/utils'
-import { OrdersContext } from './orderContext.js';
-
+import { OrdersContext, OrdersActionsContext } from './orderContext.js';
 
 function OrderRow({ order }) {
   if (Array.isArray(order)) return <h2>No Results Found</h2>
@@ -82,6 +81,14 @@ function ResultsRow({filteredResults}) {
 
 export default function Orders() {
   const orders = useContext(OrdersContext);
+  const dispatch = useContext(OrdersActionsContext);
+
+  useEffect(() => {
+    fetch('https://pizza-api-app.herokuapp.com/api/orders')
+      .then(res => res.json())
+      .then(data => dispatch({orders: data, type: "get"}))
+  }, []);
+
   const [filteredResults, setFilteredResults] = useState(orders);
   return (
         <main className={styles.main}>

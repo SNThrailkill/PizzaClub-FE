@@ -14,7 +14,7 @@ export function OrdersProvider({ children }) {
         fetch('https://pizza-api-app.herokuapp.com/api/orders')
           .then(res => res.json())
           .then(data => dispatch({orders: data, type: "get"}))
-      }, []);
+    }, []);
 
     return (
         <OrdersContext.Provider value={orders}>

@@ -1,10 +1,42 @@
 version: '3.8'
 
 services:
-  nodejs:
+  pizzaclub-fe:
     container_name: PizzaClub-FE
     image: node:20
     restart: unless-stopped
+    environment:
+      - FEATUREFLAG=VALUE
     volumes:
-      - ..:/workspaces:cached 
-    entrypoint: tail -f /dev/null  
+      - ..:/workspaces
+    entrypoint: tail -f /dev/null
+    depends_on:
+      postgresql:
+        condition: service_healthy
+
+  pizzaclub-be:
+    container_name: PizzaClub-BE
+    image: azul/zulu-openjdk:11-latest
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=mypass
+      - POSTGRES_USERNAME=myuser
+    depends_on:
+      postgresql:
+        condition: service_healthy
+  
+  postgresql:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+        - POSTGRES_PASSWORD=mypass
+        - POSTGRES_USERNAME=myuser
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    healthcheck:
+        test: /usr/bin/pg_isready -U postgres
+        interval: 1s
+        timeout: 1s
+        retries: 10
+
